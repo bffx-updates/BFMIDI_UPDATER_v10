@@ -618,7 +618,7 @@
       log("Modo automático: " + (autoFlashMode ? "ATIVADO" : "DESATIVADO"));
       // Atualiza a UI se estiver no estado idle
       if (appState === 'idle') {
-        setUIState('idle', "Aguardando porta HOST...");
+        setUIState('idle', "Aguardando porta DEVICE...");
       }
     });
 
@@ -700,10 +700,10 @@
       switch (state) {
         case 'idle':
           updateStepper(1);
-          actionBtn.textContent = autoFlashMode ? "Conectar e Atualizar BFMidi3" : "Conectar porta HOST";
+          actionBtn.textContent = autoFlashMode ? "Conectar e Atualizar BFMidi" : "Conectar porta DEVICE";
           description.textContent = autoFlashMode
-            ? "Clique no botão abaixo para conectar a porta HOST e atualizar automaticamente."
-            : "Conecte a porta HOST do BFMidi3 para iniciar a atualização do firmware.";
+            ? "Clique no botão abaixo para conectar a porta DEVICE e atualizar automaticamente."
+            : "Conecte a porta DEVICE do BFMidi para iniciar a atualização do firmware.";
           progressContainer.classList.remove("visible");
           break;
         case 'connecting':
@@ -720,7 +720,7 @@
           break;
         case 'flashing':
           updateStepper(3);
-          actionBtn.textContent = "Atualizando BFMidi3...";
+          actionBtn.textContent = "Atualizando BFMidi...";
           description.textContent = "Update em andamento...";
           actionBtn.disabled = true;
           statusRing.classList.add("flashing");
@@ -728,7 +728,7 @@
           break;
         case 'done':
           updateStepper(4);
-          actionBtn.textContent = "BFMidi3 Atualizado!";
+          actionBtn.textContent = "BFMidi Atualizado!";
           description.textContent = "Firmware atualizado com sucesso.";
           statusRing.classList.add("success");
           progressContainer.classList.remove("visible");
